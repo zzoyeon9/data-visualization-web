@@ -1,0 +1,188 @@
+#-*- coding:utf-8 -*-
+
+from models.get_Cpk_data import *
+import altair as alt
+import pandas as pd
+import numpy as np
+import math
+
+
+data_list = get_MIXA_TEMP()
+
+"""
+시리즈 개수 반환
+"""
+def get_length():
+    kinds = set()
+    
+    for i in data_list:
+        kinds.add(i)
+
+    return len(kinds)
+
+
+
+"""
+cpk 내 x 시리즈 반환
+"""
+def get_Cpk_x_series():
+
+    x_series = []
+    max_value = max(data_list)
+
+    x_series = [round(i, 1) for i in np.arange(0, max_value, 0.1)]
+    
+    return x_series
+
+
+
+"""
+cpk 내 y 시리즈 반환
+"""
+def get_Cpk_y_series(): 
+    x_series = get_Cpk_x_series()
+    y_series = [0 for i in range(len(x_series))]
+    idx = 0
+    for i in np.arange(0, max(x_series), 0.1):
+
+        y_series[idx] = data_list.count(round(i, 1))
+
+        idx += 1
+
+    return y_series
+
+
+
+"""
+cpk 데이터프레임 생성
+"""
+def create_Cpk_dataFrame(x_series : list, y_series : list):
+
+    cpk_dataFrame = pd.DataFrame({'mixa_pasteur_temp': x_series, 'Frequency': y_series}) 
+    return cpk_dataFrame
+
+
+
+"""
+표준편차 반환
+"""
+def get_sigma(u : int):
+    sum = 0
+
+    for i in data_list:
+        sum += (u - i) ** 2
+
+    sum /= len(data_list)
+    result = sum ** 0.5
+
+    return result
+
+
+
+"""
+평균 반환
+"""
+def get_avg(): return sum(data_list) / len(data_list)
+
+
+
+"""
+정규분포 그래프 x 시리즈 반환
+"""
+def get_Nd_x_series():
+
+    max_value = max(data_list)
+    min_value =  min(data_list)
+
+    nd_x_series = []
+
+    for i in np.arange(min_value - 5, max_value + 5, 0.1):
+        nd_x_series.append(round(i,1))
+
+    return nd_x_series
+
+
+
+"""
+확률밀도함수를 이용하여 그래프 y 시리즈 반환
+"""
+def get_Nd_y_series(u : float, sigma : float, nd_x_series : list):
+
+    pi = 3.14
+    nd_y_series = []
+    print("u : ", u, "   sigma : ", sigma)
+    for i in np.arange(min(nd_x_series), max(nd_x_series)+0.1, 0.1):    
+        data = round((1 / (sigma * math.sqrt(2 * pi))) * math.exp((-0.5 * (((i - u) / sigma) ** 2))), 3)
+        nd_y_series.append(data)
+    # nd_dataFrame = pd.dataFrame({'mixa_pasteur_temp': nd_x_series, 'y': nd_y_series})
+    print(nd_y_series)
+
+    return nd_y_series
+############################ 여기서부터 다시 확인해서 진행
+
+
+"""
+usl 데이터프레임 생성
+"""
+def create_usl_dataFrame(usl : int): 
+    
+    usl_dataFrame = pd.DataFrame([{"mixa_pasteur_temp": usl, "Percentage": "USL"}])
+
+    return usl_dataFrame
+
+
+
+"""
+lsl 데이터프레임 생성
+"""
+def create_lsl_dataFrame():
+
+    lsl_dataFrame = pd.DataFrame([{"ThresholdValue": lsl, "Threshold": "LSL"}])
+
+    return lsl_dataFrame
+
+"""
+nd 데이터프레임 생성
+"""
+def create_Nd_dataFrame(x_series : list, y_series : list):
+
+    nd_dataFrame = pd.DataFrame({'mixa_pasteur_temp': x_series, 'Percentage': y_series}) 
+    return nd_dataFrame
+
+
+
+"""
+block 데이터프레임 생성
+"""
+def create_Cpk_chart(df : pd.DataFrame):
+
+    bar = alt.Chart(df).mark_bar(color='blue', size=20).encode(
+        x=alt.X('mixa_pasteur_temp:Q', scale=alt.Scale(domain=[20, 70])),
+        y=alt.Y('Frequency:Q', scale=alt.Scale(domain=[0, 300])),
+        #color = alt.Color('Origin', range=col)
+    ).interactive()
+    
+    pd_graph = alt.Chart().mark_line().encode().interactive()
+    return bar
+
+
+
+"""
+nd 차트 생성
+"""
+def create_Nd_chart(df : pd.DataFrame):
+
+    line = alt.Chart(df).mark_line(color='black').encode(
+        x='mixa_pasteur_temp',
+        y='Percentage',
+    ).interactive()
+
+    return line
+
+
+
+"""
+chart to html
+"""
+def output_Chart(chart : alt.vegalite.v4.api.Chart): return chart.to_html()
+

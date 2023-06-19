@@ -1,0 +1,29 @@
+{
+    "name": "WEB-Project",
+    "description": "",
+    "version": "0.0.0",
+    "dependencies": [
+        {"name": "numpy"},
+        {"name": "pandas"},
+        {"name": "Jinja2"},
+        {"name": "fastapi"},
+        {"name": "uvicorn", "install": "uvicorn[standard]"},
+        {"name": "altair"},
+        {"name": "psutil"},
+        {"name": "filelock"},
+        {"name": "setproctitle"},
+        {"name": "brython"}
+    ],
+    "logger": {
+        "log_level": "info",
+        "log_path": "",
+        "log_prefix": "web",
+        "log_suffix": ".%Y%m%d.log",
+        "log_when": "d",
+        "log_interval": 1,
+        "log_encoding": "utf-8",
+        "log_fmt": "[{levelname}][{asctime}] - {message}",
+        "log_style": "{",
+        "log_use_colors": true
+    }
+}

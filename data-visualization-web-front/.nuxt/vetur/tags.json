@@ -1,0 +1,14 @@
+{
+  "CpkPage": {
+    "description": "Auto imported from components/CpkPage.vue"
+  },
+  "ScatterPlotPage": {
+    "description": "Auto imported from components/ScatterPlotPage.vue"
+  },
+  "SpcPage": {
+    "description": "Auto imported from components/SpcPage.vue"
+  },
+  "TrendPage": {
+    "description": "Auto imported from components/TrendPage.vue"
+  }
+}

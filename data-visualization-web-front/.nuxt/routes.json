@@ -1,0 +1,37 @@
+[
+  {
+    "name": "vision-CpkPage",
+    "path": "/vision/CpkPage",
+    "component": "C:\\\\Users\\\\Hansol\\\\Documents\\\\nuxtProject\\\\data-visualization-web-front\\\\pages\\\\vision\\\\CpkPage.vue",
+    "chunkName": "pages/vision/CpkPage",
+    "_name": "_2d3ae171"
+  },
+  {
+    "name": "vision-ScatterPlotPage",
+    "path": "/vision/ScatterPlotPage",
+    "component": "C:\\\\Users\\\\Hansol\\\\Documents\\\\nuxtProject\\\\data-visualization-web-front\\\\pages\\\\vision\\\\ScatterPlotPage.vue",
+    "chunkName": "pages/vision/ScatterPlotPage",
+    "_name": "_7b6fc8dc"
+  },
+  {
+    "name": "vision-SpcPage",
+    "path": "/vision/SpcPage",
+    "component": "C:\\\\Users\\\\Hansol\\\\Documents\\\\nuxtProject\\\\data-visualization-web-front\\\\pages\\\\vision\\\\SpcPage.vue",
+    "chunkName": "pages/vision/SpcPage",
+    "_name": "_4d3ad50e"
+  },
+  {
+    "name": "vision-TrendPage",
+    "path": "/vision/TrendPage",
+    "component": "C:\\\\Users\\\\Hansol\\\\Documents\\\\nuxtProject\\\\data-visualization-web-front\\\\pages\\\\vision\\\\TrendPage.vue",
+    "chunkName": "pages/vision/TrendPage",
+    "_name": "_70e7c120"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\Hansol\\\\Documents\\\\nuxtProject\\\\data-visualization-web-front\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_6481b404"
+  }
+]

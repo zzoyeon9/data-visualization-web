@@ -1,2 +1,5 @@
 # data-visualization-web
-![image](https://github.com/zzoyeon9/data-visualization-web/assets/47707808/773648e8-e86f-4451-a7d5-0e51a26ac796)
+
+
+https://github.com/zzoyeon9/data-visualization-web/assets/47707808/77b22f7d-a842-45c2-95e7-849f206f65f2
+

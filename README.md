@@ -17,7 +17,8 @@
 DB : PostgreSQL, HeidiSQL
 ## 웹 아키텍처 및 워크 플로우
 
-![image](https://github.com/zzoyeon9/data-visualization-web/assets/47707808/38c9a5d2-030d-48a3-b6ed-4afd6f100794)
+![image](https://github.com/zzoyeon9/data-visualization-web/assets/47707808/e438126c-9c39-4fab-9b90-171cb393377b)
+
 
 ## 식품 살균 공정 모니터링 웹 동작 시연
 
